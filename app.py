@@ -7,6 +7,7 @@ import os
 import json
 import requests
 import re
+import csv
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -62,7 +63,6 @@ def train_bot_list(data: list):
 
     trainer = ListTrainer(bot)
 
-    # Training
     for conversation in data:
         trainer.train(conversation)
 
@@ -73,10 +73,17 @@ def train_bot_corpus():
     trainer.train('chatterbot.corpus.english')
 
 
-def train_bot_ubuntu():
+def train_bot_csv(path: str):
 
-    trainer = UbuntuCorpusTrainer(bot)
-    trainer.train()
+    csvfile = open(path)
+    conversation = flatten(csv.reader(csvfile))
+    train_bot_list(list(conversation))
+
+
+def flatten(sequence):
+    for iterable in sequence:
+        for element in iterable:
+            yield element
 
 
 def reply(message: str):
@@ -92,7 +99,6 @@ def reply(message: str):
     json = urlopen(request).read().decode()
 
 
-""" Check if the recieved message is coming from a bot in order to ignore """
 def bot_message(post_req):
     return post_req['sender_type'] == 'bot'
 
@@ -101,11 +107,13 @@ def bot_message(post_req):
 
 def main():
     
-    # Initial Training
+    # Training
     train_bot_corpus()
     train_bot_list(training_data)
-    # train_bot_ubuntu()
+    train_bot_csv('coderquadszn2.csv')
+    train_bot_csv('eboard.csv')
 
+    # Run with flask
     app.run(host='0.0.0.0', port=80)
 
 
