@@ -1,0 +1,4 @@
+.secrets
+db.sqlite3
+log.json
+custom_training.json
