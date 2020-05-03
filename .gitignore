@@ -1,4 +1,4 @@
-.secrets
-db.sqlite3
-log.json
-custom_training.json
+*
+!.gitignore
+!app.py
+!README.md
