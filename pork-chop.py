@@ -119,7 +119,7 @@ def main():
 
     # Training
     if args.train:
-        #train_bot_corpus()
+        train_bot_corpus()
         train_bot_csv('szn2.csv', args.cores)
         train_bot_csv('eboard.csv', args.cores)
 
