@@ -80,6 +80,11 @@ def train_bot_csv(path: str, cores: int):
     else:
         trainer.train(conversation)
 
+def train_bot_ubuntu():
+
+    trainer = UbuntuCorpusTrainer(bot)
+    trainer.train()
+
 
 
 # HTTP Reqs
@@ -119,9 +124,10 @@ def main():
 
     # Training
     if args.train:
-        train_bot_corpus()
-        train_bot_csv('szn2.csv', args.cores)
-        train_bot_csv('eboard.csv', args.cores)
+        #train_bot_corpus()
+        #train_bot_csv('szn2.csv', args.cores)
+        #train_bot_csv('eboard.csv', args.cores)
+        train_bot_ubuntu()
 
     # Run with flask
     if args.deploy:
