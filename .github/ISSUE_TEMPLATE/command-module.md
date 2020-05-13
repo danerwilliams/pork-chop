@@ -2,7 +2,7 @@
 name: Command Module
 about: Request a new command module
 title: 'Command Module: [new module]'
-labels: ''
+labels: 'enhancement'
 assignees: ''
 
 ---
