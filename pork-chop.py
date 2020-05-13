@@ -57,7 +57,7 @@ def Pork_Chop():
     print(message)
 
     # Reply if not from another bot and name is mentioned
-    if (not bot_message(post_req)) & (bot_name.lower() in message.lower()):
+    if (not is_bot_message(post_req)) & (bot_name.lower() in message.lower()):
         reply(message)
         
     return "ok", 200
@@ -103,13 +103,12 @@ def reply(message: str):
     json = urlopen(request).read().decode()
 
 
-# Module Handler
-def call_handler(message, bot_id):
+# handle modules
+def call_handler(message):
 
     command = message.split()[0]
 
-    modules = 
-    {
+    modules = {
         '!usage': usage_handler
     }
 
@@ -122,7 +121,7 @@ def call_handler(message, bot_id):
 
 
 # Utilities
-def bot_message(post_req):
+def is_bot_message(post_req):
     return post_req['sender_type'] == 'bot'
 
 def flatten(sequence):
