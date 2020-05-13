@@ -33,8 +33,6 @@ from modules.usage import usage_handler
 bot_name = 'Pork Chop'
 app = Flask(__name__)
 bot = ChatBot(bot_name)
-prev_message = None
-message_count = 0
 
 f = open(".secrets", "r")
 secrets = json.loads(f.read())
@@ -45,21 +43,22 @@ bot_id = secrets['bot_id']
 
 @app.route('/bot', methods=['POST'])
 def Pork_Chop():
-    
-    global message_count
-    global prev_message
 
     post_req = request.get_json()
     
     sender = post_req['name']
     message = post_req['text']
-    
-    print(message)
 
+    # Conversation
     # Reply if not from another bot and name is mentioned
     if (not is_bot_message(post_req)) & (bot_name.lower() in message.lower()):
-        reply(message)
-        
+        filtered_message = message.lower().replace(bot_name.lower(), '') #filters out pork chop's name for more accurate responses
+        reply(filtered_message)
+
+    # handle command if not conversation
+    elif message.rstrip()[0] == '!':
+        command_handler(message)
+
     return "ok", 200
 
 
@@ -104,7 +103,7 @@ def reply(message: str):
 
 
 # handle modules
-def call_handler(message):
+def command_handler(message):
 
     command = message.split()[0]
 
@@ -112,9 +111,12 @@ def call_handler(message):
         '!usage': usage_handler
     }
 
+    # Exclude modules based on config.json
+    
+
     handler = modules[command]
 
-    if handler: 
+    if handler:
         return handler(message, bot_id)
     else:
         return None
@@ -137,15 +139,19 @@ def main():
     # Parse Args
     parser = argparse.ArgumentParser(prog='hulk')
     parser.add_argument('-c', '--cores', help='Number of CPU cores to use', type=int, default=1)
-    parser.add_argument('-t', '--train', help='Train bot from data', action = 'store_true')
-    parser.add_argument('-d', '--deploy', help='Deploy bot with flask on port 80', action = 'store_true')
+    parser.add_argument('-t', '--train', help='Train bot from csv data files', type=list, default=[])
+    parser.add_argument('-d', '--deploy', help='Deploy bot with flask on port 80 (requires sudo)', action = 'store_true')
+    parser.add_argument('-u', '--ubuntu', help='Train bot from ubuntu corpus', action = 'store_true')
+    parser.add_argument('-e', '--english', help='Train bot from english corpus', action = 'store_true')
     args = parser.parse_args()
 
     # Training
     if args.train:
-        #train_bot_corpus()
-        #train_bot_csv('szn2.csv', args.cores)
-        #train_bot_csv('eboard.csv', args.cores)
+        for file in args.train:
+            train_bot_csv(file, args.cores)
+    if args.english:
+        train_bot_corpus()
+    if args.ubuntu:
         train_bot_ubuntu()
 
     # Run with flask
