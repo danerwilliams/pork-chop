@@ -1,6 +1,6 @@
-*
+/*
 !.gitignore
-!pork-chop.py
+!*.py
+!/modules
 !README.md
 !LICENSE
-!/modules/
