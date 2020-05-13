@@ -24,6 +24,9 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.trainers import UbuntuCorpusTrainer
 from chatterbot.trainers import ListTrainer
 
+from importlib import reload
+from modules.usage import usage_handler
+
 
 # Globals
 
@@ -86,7 +89,6 @@ def train_bot_ubuntu():
     trainer.train()
 
 
-
 # HTTP Reqs
 def reply(message: str):
     
@@ -99,6 +101,24 @@ def reply(message: str):
 
     request = Request(url, urlencode(post).encode())
     json = urlopen(request).read().decode()
+
+
+# Module Handler
+def call_handler(message, bot_id):
+
+    command = message.split()[0]
+
+    modules = 
+    {
+        '!usage': usage_handler
+    }
+
+    handler = modules[command]
+
+    if handler: 
+        return handler(message, bot_id)
+    else:
+        return None
 
 
 # Utilities
