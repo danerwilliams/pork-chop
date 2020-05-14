@@ -112,7 +112,10 @@ def command_handler(message):
     }
 
     # Exclude modules based on config.json
-    
+    f = open("config.json", "r")
+    config = json.loads(f.read())
+    ignore = config['ignore_modules']
+    modules = {mod: modules[mod] for mod in modules if not mod in ignore}
 
     handler = modules[command]
 
@@ -143,7 +146,12 @@ def main():
     parser.add_argument('-d', '--deploy', help='Deploy bot with flask on port 80 (requires sudo)', action = 'store_true')
     parser.add_argument('-u', '--ubuntu', help='Train bot from ubuntu corpus', action = 'store_true')
     parser.add_argument('-e', '--english', help='Train bot from english corpus', action = 'store_true')
+    parser.add_argument('-n', '--name', help='Change Pork Chop\'s name from default', type=string, default='Pork Chop')
     args = parser.parse_args()
+
+    # Name
+    global bot_name
+    bot_name = args.name
 
     # Training
     if args.train:

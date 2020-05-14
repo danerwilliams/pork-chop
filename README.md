@@ -17,6 +17,10 @@
 
 ## Flags
 
+## Credits
+
+Inspired by [ginglis13/shortstop](https://github.com/ginglis13/shortstop) and [pbui/bobbit](https://github.com/pbui/bobbit)
+
 ## License
 
 [MIT License](https://github.com/danerwilliams/pork-chop/blob/master/LICENSE)
