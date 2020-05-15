@@ -2,8 +2,7 @@ import json
 
 def usage_handler(message):
     '''Have pork chop display all enabled commands'''
-    usage = '''
-    Say pork chops name and he will respond. 
+    usage = '''Say pork chops name and he will respond. 
 
     Boss pork chop around with these commands:
     !usage - display available commands

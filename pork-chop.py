@@ -48,16 +48,18 @@ def Pork_Chop():
     
     sender = post_req['name']
     message = post_req['text']
-
+    
     # Conversation
     # Reply if not from another bot and name is mentioned
     if (not is_bot_message(post_req)) & (bot_name.lower() in message.lower()):
         filtered_message = message.lower().replace(bot_name.lower(), '') #filters out pork chop's name for more accurate responses
-        reply(filtered_message)
+        bot_response = bot.get_response(filtered_message)
+        send_message(bot_response)
 
     # handle command if not conversation
-    elif message.rstrip()[0] == '!':
-        command_handler(message)
+    if message.rstrip()[0] == '!':
+        bot_response = command_handler(message)
+        send_message(bot_response)
 
     return "ok", 200
 
@@ -89,13 +91,13 @@ def train_bot_ubuntu():
 
 
 # HTTP Reqs
-def reply(message: str):
+def send_message(message: str):
     
     url = 'https://api.groupme.com/v3/bots/post'
 
     post = {
         'bot_id': bot_id,
-        'text': bot.get_response(message)
+        'text': message
     }
 
     request = Request(url, urlencode(post).encode())
@@ -117,10 +119,12 @@ def command_handler(message):
     ignore = config['ignore_modules']
     modules = {mod: modules[mod] for mod in modules if not mod in ignore}
 
+    print(modules)
+
     handler = modules[command]
 
     if handler:
-        return handler(message, bot_id)
+        return handler(message)
     else:
         return None
 
