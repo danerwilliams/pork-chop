@@ -140,13 +140,20 @@ def flatten(sequence):
 def main():
 
     # Parse Args
-    parser = argparse.ArgumentParser(prog='hulk')
+    parser = argparse.ArgumentParser(prog='pork-chop')
     parser.add_argument('-c', '--cores', help='Number of CPU cores to use', type=int, default=1)
-    parser.add_argument('-t', '--train', help='Train bot from csv data files', type=list, default=[])
+    parser.add_argument('-t', '--train', help='Train bot from csv data files', nargs='+', type=str, default=[])
     parser.add_argument('-d', '--deploy', help='Deploy bot with flask on port 80 (requires sudo)', action = 'store_true')
     parser.add_argument('-u', '--ubuntu', help='Train bot from ubuntu corpus', action = 'store_true')
     parser.add_argument('-e', '--english', help='Train bot from english corpus', action = 'store_true')
-    parser.add_argument('-n', '--name', help='Change Pork Chop\'s name from default', type=string, default='Pork Chop')
+    parser.add_argument('-n', '--name', help='Change Pork Chop\'s name from default', type=str, default='Pork Chop')
+
+    # Help if no args
+    if len(sys.argv) < 2:
+        parser.print_help(sys.stderr)
+        sys.exit(1)
+
+    # Set args with argparse
     args = parser.parse_args()
 
     # Name
@@ -155,8 +162,9 @@ def main():
 
     # Training
     if args.train:
-        for file in args.train:
-            train_bot_csv(file, args.cores)
+        for csv_file in args.train:
+            print(csv_file)
+            train_bot_csv(csv_file, args.cores)
     if args.english:
         train_bot_corpus()
     if args.ubuntu:
