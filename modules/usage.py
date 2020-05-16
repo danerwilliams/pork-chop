@@ -6,7 +6,6 @@ def usage_handler(message):
     Say pork chops name and he will respond. 
 
     Boss pork chop around with these commands:
-    !usage - display available commands
     '''
 
     # load config file
@@ -14,15 +13,13 @@ def usage_handler(message):
     config = json.loads(f.read())
     ignore = config['ignore_modules']
 
-    # hard coded module usage definitions
-    modules = {
-        '!example': 'example module not to be included'
-    }
-
     # add to usage string everything not specified to be ignored in config.json
-    for mod in modules:
-        if not mod in ignore:
-            usage += f'\n{mod} - {modules[mod]}'
-
-
-    return usage
+    with open("README.md") as f:
+        commands = []
+        for line in f:
+            line = line.strip()
+            # isolate lines of readme describing the modules
+            if ('* !' in line) & (not line.split()[1]):
+                commands.append(line.replace('\\', ''))
+    
+    return usage + '\n '.join(commands)
