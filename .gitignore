@@ -2,6 +2,7 @@
 !.gitignore
 !*.py
 !/modules
+/modules/__pycache__
 !README.md
 !LICENSE
 !config.json
