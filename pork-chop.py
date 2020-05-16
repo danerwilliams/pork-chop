@@ -48,16 +48,18 @@ def Pork_Chop():
     
     sender = post_req['name']
     message = post_req['text']
-
+    
     # Conversation
     # Reply if not from another bot and name is mentioned
     if (not is_bot_message(post_req)) & (bot_name.lower() in message.lower()):
         filtered_message = message.lower().replace(bot_name.lower(), '') #filters out pork chop's name for more accurate responses
-        reply(filtered_message)
+        bot_response = bot.get_response(filtered_message)
+        send_message(bot_response)
 
     # handle command if not conversation
-    elif message.rstrip()[0] == '!':
-        command_handler(message)
+    if message.rstrip()[0] == '!':
+        bot_response = command_handler(message)
+        send_message(bot_response)
 
     return "ok", 200
 
@@ -89,13 +91,13 @@ def train_bot_ubuntu():
 
 
 # HTTP Reqs
-def reply(message: str):
+def send_message(message: str):
     
     url = 'https://api.groupme.com/v3/bots/post'
 
     post = {
         'bot_id': bot_id,
-        'text': bot.get_response(message)
+        'text': message
     }
 
     request = Request(url, urlencode(post).encode())
@@ -117,10 +119,12 @@ def command_handler(message):
     ignore = config['ignore_modules']
     modules = {mod: modules[mod] for mod in modules if not mod in ignore}
 
+    print(modules)
+
     handler = modules[command]
 
     if handler:
-        return handler(message, bot_id)
+        return handler(message)
     else:
         return None
 
@@ -140,13 +144,20 @@ def flatten(sequence):
 def main():
 
     # Parse Args
-    parser = argparse.ArgumentParser(prog='hulk')
+    parser = argparse.ArgumentParser(prog='pork-chop')
     parser.add_argument('-c', '--cores', help='Number of CPU cores to use', type=int, default=1)
-    parser.add_argument('-t', '--train', help='Train bot from csv data files', type=list, default=[])
+    parser.add_argument('-t', '--train', help='Train bot from csv data files', nargs='+', type=str, default=[])
     parser.add_argument('-d', '--deploy', help='Deploy bot with flask on port 80 (requires sudo)', action = 'store_true')
     parser.add_argument('-u', '--ubuntu', help='Train bot from ubuntu corpus', action = 'store_true')
     parser.add_argument('-e', '--english', help='Train bot from english corpus', action = 'store_true')
-    parser.add_argument('-n', '--name', help='Change Pork Chop\'s name from default', type=string, default='Pork Chop')
+    parser.add_argument('-n', '--name', help='Change Pork Chop\'s name from default', type=str, default='Pork Chop')
+
+    # Help if no args
+    if len(sys.argv) < 2:
+        parser.print_help(sys.stderr)
+        sys.exit(1)
+
+    # Set args with argparse
     args = parser.parse_args()
 
     # Name
@@ -155,8 +166,9 @@ def main():
 
     # Training
     if args.train:
-        for file in args.train:
-            train_bot_csv(file, args.cores)
+        for csv_file in args.train:
+            print(csv_file)
+            train_bot_csv(csv_file, args.cores)
     if args.english:
         train_bot_corpus()
     if args.ubuntu:
