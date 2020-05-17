@@ -45,10 +45,10 @@ with open(".secrets", "r") as f:
 def Pork_Chop():
 
     post_req = request.get_json()
-    
+
     sender = post_req['name']
     message = post_req['text']
-    
+
     # Conversation
     # Reply if not from another bot and name is mentioned
     if (not is_bot_message(post_req)) & (bot_name.lower() in message.lower()):
@@ -77,7 +77,7 @@ def train_bot_csv(path: str, cores: int):
     csvfile = open(path)
     conversation = list(flatten(csv.reader(csvfile)))
     trainer = ListTrainer(bot)
-    
+
     if cores > 1:
         with concurrent.futures.ProcessPoolExecutor(cores) as executor:
             executor.map(trainer.train, conversation)
@@ -92,7 +92,7 @@ def train_bot_ubuntu():
 
 # HTTP Reqs
 def send_message(message: str):
-    
+
     url = 'https://api.groupme.com/v3/bots/post'
 
     post = {
@@ -111,6 +111,7 @@ def command_handler(message):
 
     modules = {
         '!usage': usage_handler,
+        '!kanye': usage_handler,
         '!stonks': stonks_handler
     }
 

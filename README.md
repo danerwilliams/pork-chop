@@ -8,7 +8,7 @@
 
 ## Conversations
 
-We use [ChatterBot](https://github.com/gunthercox/ChatterBot), a machine learning conversational dialog engine to power Pork Chop's conversations. 
+We use [ChatterBot](https://github.com/gunthercox/ChatterBot), a machine learning conversational dialog engine to power Pork Chop's conversations.
 
 ### Training
 
@@ -19,9 +19,10 @@ Pork Chop has a few options for training:
 
 ## Command Modules
 
-Pork chop will respond to the following command modules:  
+Pork chop will respond to the following command modules:
 * !example - Template module
 * !usage - Display modules and their use
+* !kanye - Display a random Kanye West quote.
 * !stonks \<symbol\> - Get stock price information
 
 ## Deployment
@@ -56,7 +57,7 @@ optional arguments:
 
 Inspired by [ginglis13/shortstop](https://github.com/ginglis13/shortstop) and [pbui/bobbit](https://github.com/pbui/bobbit)
 
-Useful Documentation:  
+Useful Documentation:
 * [ChatterBot](https://chatterbot.readthedocs.io/en/stable/)
 * [AWS Lambda](https://docs.aws.amazon.com/lambda/index.html)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/quickstart/)
