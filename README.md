@@ -3,7 +3,7 @@
 > An AI chat bot
 
 <p align="center">
-  <img width="400" height="711" src="http://www.fillmurray.com/460/300">
+  <img width="400" height="711" src="./screenshot">
 </p>
 
 ## Conversations
