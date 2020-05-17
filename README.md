@@ -68,13 +68,9 @@ Useful Documentation:
 
 This project is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/danerwilliams/pork-chop/graphs/contributors).
 
-[![Dane Williams](https://avatars3.githubusercontent.com/u/22798229?v=4&s=70)](https://github.com/danerwilliams) |
---- |
-[Dane Williams](https://github.com/danerwilliams) |
-
-[![Conor Murphy](https://avatars3.githubusercontent.com/u/49375988?s=400&v=4)](https://github.com/cnrmrphy) |
---- |
-[Conor Murphy](https://github.com/cnrmrphy) |
+[<img width="80" height="80" src="https://avatars3.githubusercontent.com/u/22798229?v=4&s=70">](https://github.com/danerwilliams) | [<img width="80" height="80" src="https://avatars3.githubusercontent.com/u/49375988?s=400&v=4">](https://github.com/cnrmrphy) | [<img width="80" height="80" src="https://avatars2.githubusercontent.com/u/8454416?s=400&v=4">](https://github.com/jheneghan16) | 
+--- | --- | --- |
+[Dane Williams](https://github.com/danerwilliams) | [Conor Murphy](https://github.com/cnrmrphy) | [James Heneghan](https://github.com/jheneghan16) |
 
 ## License
 
