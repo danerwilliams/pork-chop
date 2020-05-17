@@ -23,7 +23,7 @@ def stonks_handler(message):
     if price:
         price = json.loads(price.group(1))['raw']
         change = json.loads(change.group(1))['raw']
-        response = '$' + str(price) + ' {:.2f}'.format(change) + '%'
+        response = '$' + str(price) + ' ({:.2f})'.format(change) + '%'
         if '-' in response:
             return response + ' 📉'
         return response + ' 📈'
