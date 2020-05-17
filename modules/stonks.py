@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
 import requests
 import re
+import json
+#from bs4 import BeautifulSoup
 
 
 def stonks_handler(message):
@@ -14,11 +17,12 @@ def stonks_handler(message):
         return '!stonks <symbol>'
     
     stock_html = requests.get(url).text
-    price = re.search(r'data-reactid="50">([0-9]+\.[0-9]{2})</span>', stock_html)
-    change = re.search(r'data-reactid="51">(.*?)</span>', stock_html)
-    print(price) 
-    if price:
-        return '$' + price.group(1) + ' / ' + change.group(1)
-
-    return 'Could not find stock info'
         
+    price = re.search(r'currentPrice.*?({.*?})', stock_html)
+    change = re.search(r'regularMarketChangePercent.*?({.*?})', stock_html)
+    if price:
+        price = json.loads(price.group(1))['raw']
+        change = json.loads(change.group(1))['raw']
+        return '$' + str(price) + ' {:.2f}'.format(change) + '%'
+
+    return 'Could get ' + symbol + ' price'
