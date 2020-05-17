@@ -28,6 +28,7 @@ from importlib import reload
 from modules.usage import usage_handler
 from modules.stonks import stonks_handler
 from modules.kanye import kanye_handler
+from modules.aids import aids_handler
 
 # Globals
 
@@ -113,6 +114,7 @@ def command_handler(message):
     modules = {
         '!usage': usage_handler,
         '!kanye': kanye_handler,
+        '!aids' : aids_handler,
         '!stonks': stonks_handler
     }
 
