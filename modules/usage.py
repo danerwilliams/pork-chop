@@ -6,9 +6,9 @@ def usage_handler(message):
     usage = 'Say pork chops name and he will respond.\n\nPork Chop will also reply to these commands:\n\n'
 
     # load config file
-    f = open("config.json", "r")
-    config = json.loads(f.read())
-    ignore = config['ignore_modules']
+    with open("config.json", "r") as f:
+        config = json.loads(f.read())
+        ignore = config['ignore_modules']
 
     print(ignore)
 
