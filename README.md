@@ -10,6 +10,7 @@
 ## Command Modules
 
 Pork chop will respond to the following command modules:  
+* !example - Template module
 * !usage - Display modules and their use
 * !stonks <symbol> - Get stock price information
 
