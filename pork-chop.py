@@ -26,7 +26,7 @@ from chatterbot.trainers import ListTrainer
 
 from importlib import reload
 from modules.usage import usage_handler
-
+from modules.stonks import stonks_handler
 
 # Globals
 
