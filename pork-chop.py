@@ -26,7 +26,7 @@ from chatterbot.trainers import ListTrainer
 
 from importlib import reload
 from modules.usage import usage_handler
-
+from modules.stonks import stonks_handler
 
 # Globals
 
@@ -34,9 +34,9 @@ bot_name = 'Pork Chop'
 app = Flask(__name__)
 bot = ChatBot(bot_name)
 
-f = open(".secrets", "r")
-secrets = json.loads(f.read())
-bot_id = secrets['bot_id']
+with open(".secrets", "r") as f:
+    secrets = json.loads(f.read())
+    bot_id = secrets['bot_id']
 
 
 # Flask Setup
@@ -110,14 +110,15 @@ def command_handler(message):
     command = message.split()[0]
 
     modules = {
-        '!usage': usage_handler
+        '!usage': usage_handler,
+        '!stonks': stonks_handler
     }
 
     # Exclude modules based on config.json
-    f = open("config.json", "r")
-    config = json.loads(f.read())
-    ignore = config['ignore_modules']
-    modules = {mod: modules[mod] for mod in modules if not mod in ignore}
+    with open("config.json", "r") as f:
+        config = json.loads(f.read())
+        ignore = config['ignore_modules']
+        modules = {mod: modules[mod] for mod in modules if not mod in ignore}
 
     print(modules)
 
