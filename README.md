@@ -24,7 +24,6 @@ Pork chop will respond to the following command modules:
 * !usage - Display modules and their use
 * !kanye - Display a random Kanye West quote.
 * !stonks \<symbol\> - Get stock price information
-* !aids \<user\> - give aids to a user
 
 ## Deployment
 
