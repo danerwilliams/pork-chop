@@ -15,11 +15,14 @@ def stonks_handler(message):
         url += symbol
     else:
         return '!stonks <symbol>'
-    
     stock_html = requests.get(url).text
-    price = re.search(r'currentPrice.*?({.*?})', stock_html)
+    price = re.search(r'regularMarketPrice.*?({.*?})', stock_html)
     change = re.search(r'regularMarketChangePercent.*?({.*?})', stock_html)
     if price.group():
         price = json.loads(price.group(1))['raw']
         change = json.loads(change.group(1))['raw']
-        return '$' + str(price) + ' / ' + '{:.2f}'.format(change) + '%'
+        return '$' + str(price) + ' / ' + ('' if change < 0 else '+') + '{:.2f}'.format(change) + '%'
+
+    return 'Could not find stock info'
+
+
