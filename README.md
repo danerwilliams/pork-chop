@@ -2,7 +2,9 @@
 
 > An AI chat bot
 
-![Screenshot](./screenshot.png)
+<p align="center">
+  <img width="400" height="711" src="http://www.fillmurray.com/460/300">
+</p>
 
 ## Conversations
 
