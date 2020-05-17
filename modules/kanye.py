@@ -1,6 +1,6 @@
 import requests
 
-def kanye_handler():
+def kanye_handler(message):
     '''Gives a random Kanye West quote.'''
 
     url="https://api.kanye.rest/?format=text"
