@@ -1,14 +1,6 @@
 import json
 
 def aids_handler(sender, message, bot_id, app_id):
-    """Give aids to a user"""
-    usage = "Give aids to a user.\n\
-             usage: !aids <user>\n\
-             Get Number of aids\n\
-             usage: !aids\n\
-             See aids History\n\
-             usage: !aids list"
-
     message = message.strip().split()
     if len(message) > 1:
         if message[1] == 'list':
