@@ -110,7 +110,7 @@ def command_handler(message):
     command = message.split()[0]
 
     modules = {
-        '!usage': usage_handler
+        '!usage': usage_handler,
         '!stonks': stonks_handler
     }
 
