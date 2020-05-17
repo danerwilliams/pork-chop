@@ -34,9 +34,9 @@ bot_name = 'Pork Chop'
 app = Flask(__name__)
 bot = ChatBot(bot_name)
 
-f = open(".secrets", "r")
-secrets = json.loads(f.read())
-bot_id = secrets['bot_id']
+with open(".secrets", "r") as f:
+    secrets = json.loads(f.read())
+    bot_id = secrets['bot_id']
 
 
 # Flask Setup
@@ -115,10 +115,10 @@ def command_handler(message):
     }
 
     # Exclude modules based on config.json
-    f = open("config.json", "r")
-    config = json.loads(f.read())
-    ignore = config['ignore_modules']
-    modules = {mod: modules[mod] for mod in modules if not mod in ignore}
+    with open("config.json", "r") as f:
+        config = json.loads(f.read())
+        ignore = config['ignore_modules']
+        modules = {mod: modules[mod] for mod in modules if not mod in ignore}
 
     print(modules)
 
