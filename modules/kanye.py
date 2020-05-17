@@ -7,7 +7,7 @@ def kanye_handler():
     r = requests.get(url)
 
     if r.status_code == 200:
-        return f">'{r.text}' \n- Kanye West"
+        return f">'{r.text}' - Kanye West"
     else:
         return f"Error {r.status_code}: could not retrieve quote"
 
