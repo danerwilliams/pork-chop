@@ -3,7 +3,7 @@
 > An AI chat bot
 
 <p align="center">
-  <img width="400" height="711" src="./groupme_screenshot.png">
+  <img width="350" height="513" src="./groupme_screenshot.png">
 </p>
 
 ## Conversations
