@@ -14,10 +14,10 @@ def stonks_handler(message):
         return '!stonks <symbol>'
     
     stock_html = requests.get(url).text
-    price = re.search(r'data-reactid="50">[0-9]+\.[0-9]{2}</span>', stock_html)
+    price = re.search(r'data-reactid="50">([0-9]+\.[0-9]{2})</span>', stock_html)
     change = re.search(r'data-reactid="51">(.*?)</span>', stock_html)
     print(price) 
-    if price.group():
+    if price:
         return '$' + price.group(1) + ' / ' + change.group(1)
 
     return 'Could not find stock info'
