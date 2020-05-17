@@ -114,7 +114,7 @@ def command_handler(message):
     modules = {
         '!usage': usage_handler,
         '!kanye': kanye_handler,
-        '!turn' : aids_handler,
+        '!turn' : turn_handler,
         '!stonks': stonks_handler
     }
 

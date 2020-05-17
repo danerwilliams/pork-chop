@@ -6,9 +6,9 @@ def turn_handler(message):
         if message[1] == 'list':
             return turnList()
         writeTurn(message[1:])
-        return "{} got turned.".format(' '.join(message[1:]))
+        return f"{''.join(message[1:])} got turned."
     else:
-        return "{} has been turned {} times".format(sender,getN(sender))
+        return f"{sender} has been turned {getN(sender)} times"
     return None
 
 def getN(user):
@@ -31,14 +31,9 @@ def writeTurn(user):
 
     with open('turnHistory.json', 'w') as f:
         json.dump(history, f)
-    
+
 def turnList():
-    historyStr = []
     with open('turnHistory.json', 'r') as f:
         history = json.load(f)
-
-    for name in history:
-        historyStr.append(name+' '+str(history[name]))
-    
-    return '\n'.join(historyStr)
+    return "\n".join( f"{name} {num}" for name, num in history.items())
 
