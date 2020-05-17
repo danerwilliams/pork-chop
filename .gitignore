@@ -3,6 +3,7 @@
 !*.py
 !/modules
 /modules/__pycache__
+!/data
 !README.md
 !LICENSE
 !config.json
