@@ -3,7 +3,7 @@
 > An AI chat bot
 
 <p align="center">
-  <img width="400" height="711" src="./screenshot">
+  <img width="400" height="711" src="./screenshot.png">
 </p>
 
 ## Conversations
