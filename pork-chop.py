@@ -111,6 +111,7 @@ def command_handler(message):
 
     modules = {
         '!usage': usage_handler
+        '!stonks': stonks_handler
     }
 
     # Exclude modules based on config.json
