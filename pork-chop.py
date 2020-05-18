@@ -36,9 +36,10 @@ bot_name = 'Pork Chop'
 app = Flask(__name__)
 bot = ChatBot(bot_name)
 
-with open(".secrets", "r") as f:
-    secrets = json.loads(f.read())
-    bot_id = secrets['bot_id']
+try:
+    bot_id = os.environ['bot_id']
+except KeyError:
+    sys.exit("Error: 'bot_id' environment vairable not present")
 
 
 # Flask Setup
