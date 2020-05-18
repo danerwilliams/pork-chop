@@ -29,7 +29,7 @@ Pork chop will respond to the following command modules:
 
 ## Deployment
 
-Pork Chop can be deployed either on a server or with AWS serverless lambda functions.
+Pork Chop can be deployed on any server with python3.
 
 ### Bot Registration
 
@@ -48,8 +48,6 @@ Pork Chop can be deployed either on a server or with AWS serverless lambda funct
 * `vim .env` record environment variables to a file, minimum need to set BOT_ID (use .env.example for reference)
 * `export $(grep -v '^#' .env | xargs)` set environment variables from .env file
 * `sudo ./pork-chop.py -d` deploy pork chop on port 80 (you can add `&> /dev/null &` to ignore output and run in background)
-
-### Serverless
 
 ## Flags
 
@@ -77,7 +75,6 @@ Inspired by [ginglis13/shortstop](https://github.com/ginglis13/shortstop) and [p
 
 Useful Documentation:
 * [ChatterBot](https://chatterbot.readthedocs.io/en/stable/)
-* [AWS Lambda](https://docs.aws.amazon.com/lambda/index.html)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/quickstart/)
 * [GroupMe](https://dev.groupme.com/tutorials/bots)
 
