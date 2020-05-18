@@ -13,7 +13,7 @@ def turn_handler(message):
     return "specify a user with !turn <user> or use !turn list"
 
 def writeTurn(user):
-    user = ' '.join(user)
+    user = ' '.join(user).lower()
     with open('data/turnHistory.json', 'r') as f:
         history = json.load(f)
 
