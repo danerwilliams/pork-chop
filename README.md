@@ -25,15 +25,31 @@ Pork chop will respond to the following command modules:
 * !kanye - Display a random Kanye West quote.
 * !stonks \<symbol\> - Get stock price information
 * !turn \<user\> [list] - Turn a user or list number of turns for all users
-* !helpmecook \<food\> - Get recipe help for cooking a tasty vegan meal
+* !helpmecook \<food\> - Get recipe help for cooking a tasty vegan meal with spoonacular api
 
 ## Deployment
 
-Pork Chop can be deployed either on a server or with AWS serverless lambda functions (coming soon).
+Pork Chop can be deployed either on a server or with AWS serverless lambda functions.
+
+### Bot Registration
+
+* Navigate to [dev.groupme.com/bots](https://dev.groupme.com/bots)
+* Click the orange button labeled "create bot"
+* Choose the groupchat you would like pork chop to live in
+* For the callback URL, enter the ip or domain of the server Pork Chop will be run on with the extension /bot as this is where the flask handler is set to.
+* If you are running pork chop on serverless mode set up the callback URL appropriate to you AWS Lambda function
+* You can leave Avatar URL blank or set it to your desired image
 
 ### Server
 
-### Serverless (AWS Lambda)
+* `git clone https://github.com/danerwilliams/pork-chop.git` Clone pork-chop
+* `cd pork-chop` enter pork-chop directory
+* `pip3 install -r requirements.txt` install pork-chop's python3 dependencies
+* `vim .env` record environment variables to a file, minimum need to set BOT_ID (use .env.example for reference)
+* `export $(grep -v '^#' .env | xargs)` set environment variables from .env file
+* `sudo ./pork-chop.py -d` deploy pork chop on port 80 (you can add `&> /dev/null &` to ignore output and run in background)
+
+### Serverless
 
 ## Flags
 
