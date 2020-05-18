@@ -29,6 +29,7 @@ from modules.usage import usage_handler
 from modules.stonks import stonks_handler
 from modules.kanye import kanye_handler
 from modules.turn import turn_handler
+from modules.recipes import recipes_handler
 
 # Globals
 
@@ -37,7 +38,7 @@ app = Flask(__name__)
 bot = ChatBot(bot_name)
 
 try:
-    bot_id = os.environ['bot_id']
+    bot_id = os.environ['BOT_ID']
 except KeyError:
     sys.exit("Error: 'bot_id' environment vairable not present")
 
@@ -116,7 +117,8 @@ def command_handler(message):
         '!usage': usage_handler,
         '!kanye': kanye_handler,
         '!turn' : turn_handler,
-        '!stonks': stonks_handler
+        '!stonks': stonks_handler,
+        '!helpmecook': recipes_handler
     }
 
     # Exclude modules based on config.json

@@ -25,6 +25,7 @@ Pork chop will respond to the following command modules:
 * !kanye - Display a random Kanye West quote.
 * !stonks \<symbol\> - Get stock price information
 * !turn \<user\> [list] - Turn a user or list number of turns for all users
+* !helpmecook \<food\> - Get recipe help for cooking a tasty vegan meal
 
 ## Deployment
 
@@ -68,7 +69,7 @@ Useful Documentation:
 
 This project is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/danerwilliams/pork-chop/graphs/contributors).
 
-[<img width="80" height="80" src="https://avatars3.githubusercontent.com/u/22798229?v=4&s=70">](https://github.com/danerwilliams) | [<img width="80" height="80" src="https://avatars3.githubusercontent.com/u/49375988?s=400&v=4">](https://github.com/cnrmrphy) | [<img width="80" height="80" src="https://avatars2.githubusercontent.com/u/8454416?s=400&v=4">](https://github.com/jheneghan16) | [<img width="80" height="80" src="https://avatars3.githubusercontent.com/u/50080644?s=400&u=45b2e63a2d05e4ce0887c3d82e26ab08d6e13dbe&v=4">](https://github.com/beniaminogreen) | 
+[<img width="80" height="80" src="https://avatars3.githubusercontent.com/u/22798229?v=4&s=70">](https://github.com/danerwilliams) | [<img width="80" height="80" src="https://avatars3.githubusercontent.com/u/49375988?s=400&v=4">](https://github.com/cnrmrphy) | [<img width="80" height="80" src="https://avatars2.githubusercontent.com/u/8454416?s=400&v=4">](https://github.com/jheneghan16) | [<img width="80" height="80" src="https://avatars3.githubusercontent.com/u/50080644?s=400&u=45b2e63a2d05e4ce0887c3d82e26ab08d6e13dbe&v=4">](https://github.com/beniaminogreen) |
 --- | --- | --- | --- |
 [Dane Williams](https://github.com/danerwilliams) | [Conor Murphy](https://github.com/cnrmrphy) | [James Heneghan](https://github.com/jheneghan16) | [Ben Green](https://github.com/beniaminogreen) |
 
