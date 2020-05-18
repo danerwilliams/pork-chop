@@ -3,25 +3,24 @@ import requests
 import os
 
 def recipe_handler(message):
+    message = message.split(' ',1)[1]
+
     try:
         key=os.environ['SPOONACULAR_API_KEY']
     except KeyError:
         return "Spoonacular API key not present in environment"
 
-    message = message.split(' ',1)[1]
+    #get recipe id
     url = "https://api.spoonacular.com/recipes/search"
-
     params = {"apiKey":key,
             "query":message,
             "number":1,
             "diet":"vegan",
             "limitLicense": True,
-            "instructionsRequired": True}
+            "instructionsRequired": True
+            }
     r = requests.get(url, params = params)
-
-    if r.status_code == 429:
-        return "Error 429: too many requests. Please try again tomorrow"
-    elif r.status_code != 200:
+    if r.status_code != 200:
         return f"Error {r.status_code}. Could not retrieve recipie"
 
     data = r.json()['results'][0]
@@ -31,13 +30,10 @@ def recipe_handler(message):
     else:
         return "No results found :( please try a different query"
 
+    #get recipe info
     url = f"https://api.spoonacular.com/recipes/{id}/information"
-
     r = requests.get(url, params = {"apiKey":key})
-
-    if r.status_code == 429:
-        return "Error 429: too many requests. Please try again tomorrow"
-    elif r.status_code != 200:
+    if r.status_code != 200:
         return f"Error {r.status_code}. Could not retrieve recipie"
 
     data =r.json()
