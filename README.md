@@ -51,6 +51,8 @@ Pork Chop can be deployed either on a server or with AWS serverless lambda funct
 
 ### Serverless
 
+TODO: Implement serverless lambda
+
 ## Flags
 
 `./pork-chop.py -h`
