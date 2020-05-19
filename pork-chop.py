@@ -30,7 +30,6 @@ from modules.stonks import stonks_handler
 from modules.kanye import kanye_handler
 from modules.turn import turn_handler
 from modules.recipes import recipes_handler
-from modules.manwich import manwich_handler
 
 # Globals
 
