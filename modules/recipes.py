@@ -5,6 +5,9 @@ import os
 def recipe_handler(message):
     message = message.split(' ',1)[1]
 
+    if message == 'manwich':
+        return 'https://open.spotify.com/playlist/1zLerOR4qEd25bOhcbE8V8?si=gXEYgWZvQd-UGZ_HAPShxw'
+
     try:
         key=os.environ['SPOONACULAR_API_KEY']
     except KeyError:
