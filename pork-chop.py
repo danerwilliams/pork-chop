@@ -37,10 +37,19 @@ bot_name = 'Pork Chop'
 app = Flask(__name__)
 bot = ChatBot(bot_name)
 
-try:
-    bot_id = os.environ['BOT_ID']
-except KeyError:
-    sys.exit("Error: 'bot_id' environment vairable not present")
+# If there is a .secrets file, use that
+if os.path.isfile('.secrets'):
+    with open('.secrets', 'r') as f:
+        secrets = json.loads(f.read())
+        try: 
+            bot_id = secrets['BOT_ID']
+        except KeyError:
+            sys.exit('Error: BOT_ID not present in .secrets')
+else: # Otherwise, try environment variables
+    try:
+        bot_id = os.environ['BOT_ID']
+    except KeyError:
+        sys.exit("Error: 'bot_id' environment vairable not present")
 
 
 # Flask Setup
@@ -153,9 +162,11 @@ def main():
 
     # Parse Args
     parser = argparse.ArgumentParser(prog='pork-chop')
+
     parser.add_argument('-c', '--cores', help='Number of CPU cores to use', type=int, default=1)
     parser.add_argument('-t', '--train', help='Train bot from csv data files', nargs='+', type=str, default=[])
-    parser.add_argument('-d', '--deploy', help='Deploy bot with flask on port 80 (requires sudo)', action = 'store_true')
+    parser.add_argument('-d', '--deploy', help='Deploy bot with flask', action = 'store_true')
+    parser.add_argument('-p', '--port', help='Specify deployment port (default 80)', type=int, default=80)
     parser.add_argument('-u', '--ubuntu', help='Train bot from ubuntu corpus', action = 'store_true')
     parser.add_argument('-e', '--english', help='Train bot from english corpus', action = 'store_true')
     parser.add_argument('-n', '--name', help='Change Pork Chop\'s name from default', type=str, default='Pork Chop')
@@ -184,7 +195,7 @@ def main():
 
     # Run with flask
     if args.deploy:
-        app.run(host='0.0.0.0', port=80)
+        app.run(host='0.0.0.0', port = args.port)
 
 
 # Run Main
