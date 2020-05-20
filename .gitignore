@@ -10,3 +10,4 @@
 !example_training.csv
 !groupme_screenshot.png
 !.secrets.example
+!.env.example
