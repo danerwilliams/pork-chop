@@ -1,17 +1,26 @@
-#!/bin/python
 import requests
 import os
 
 def recipe_handler(message):
     message = message.split(' ',1)[1]
-
+    
+    # MANWICH (real ones know)
     if message == 'manwich':
         return 'https://open.spotify.com/playlist/1zLerOR4qEd25bOhcbE8V8?si=gXEYgWZvQd-UGZ_HAPShxw'
 
-    try:
-        key=os.environ['SPOONACULAR_API_KEY']
-    except KeyError:
-        return "Spoonacular API key not present in environment"
+    # try loading from .secrets file
+    if os.path.isfile('.secrets'):
+        with open('.secrets', 'r') as f:
+            secrets = json.loads(f.read())
+            try:
+                bot_id = secrets['SPOONACULAR_API_KEY']
+            except KeyError:
+                return 'Spoonacular API key not present in .secrets'
+    else: # otherwise try environment variables
+        try:
+            key=os.environ['SPOONACULAR_API_KEY']
+        except KeyError:
+            return "Spoonacular API key not present in environment"
 
     #get recipe id
     url = "https://api.spoonacular.com/recipes/search"
