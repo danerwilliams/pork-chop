@@ -1,7 +1,7 @@
 import requests
 import os
 
-def recipe_handler(message):
+def recipes_handler(message):
     message = message.split(' ',1)[1]
     
     # MANWICH (real ones know)
