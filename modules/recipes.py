@@ -1,11 +1,14 @@
 import requests
 import os
+import json
 
 def recipes_handler(message):
     message = message.split(' ',1)[1]
+
+    print(message)
     
     # MANWICH (real ones know)
-    if message == 'manwich':
+    if message.strip() == 'manwich':
         return 'https://open.spotify.com/playlist/1zLerOR4qEd25bOhcbE8V8?si=gXEYgWZvQd-UGZ_HAPShxw'
 
     # try loading from .secrets file
