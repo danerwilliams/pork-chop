@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# author: conor murphy, github.com/cnrmrphy
 
 import requests
 import os
@@ -38,9 +39,9 @@ def youtube_handler(message):
     results = json.loads(results.text)
 
     video_url = 'https://www.youtube.com/watch' 
-    video_id = results["items"][0]["id"]["videoId"] 
-    
-    if not video_id:
+    try:
+        video_id = results["items"][0]["id"]["videoId"] 
+    except IndexError:
         return(f'No results found :( please try a different query')
 
     return(video_url + '?v=' + video_id)

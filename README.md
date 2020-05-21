@@ -27,6 +27,7 @@ Pork chop will respond to the following command modules:
 * !turn \<user\> [list] - Turn a user or list number of turns for all users
 * !helpmecook \<food\> - Get recipe help for cooking a tasty vegan meal with spoonacular api (try cooking manwich)
 * !yt \<query\> - Get the best-match YouTube video url for your query
+* !reddit \<query\> - Get the best-match subreddit for your query
 
 ## Deployment
 
