@@ -30,6 +30,7 @@ from modules.stonks import stonks_handler
 from modules.kanye import kanye_handler
 from modules.turn import turn_handler
 from modules.recipes import recipes_handler
+from modules.youtube import youtube_handler
 
 # Globals
 
@@ -127,7 +128,8 @@ def command_handler(message):
         '!kanye': kanye_handler,
         '!turn' : turn_handler,
         '!stonks': stonks_handler,
-        '!helpmecook': recipes_handler
+        '!helpmecook': recipes_handler, 
+        '!yt': youtube_handler
     }
 
     # Exclude modules based on config.json

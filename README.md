@@ -26,6 +26,7 @@ Pork chop will respond to the following command modules:
 * !stonks \<symbol\> - Get stock price information
 * !turn \<user\> [list] - Turn a user or list number of turns for all users
 * !helpmecook \<food\> - Get recipe help for cooking a tasty vegan meal with spoonacular api (try cooking manwich)
+* !yt \<query\> - Get the best-match YouTube video url for your query
 
 ## Deployment
 
