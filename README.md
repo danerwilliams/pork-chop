@@ -49,7 +49,7 @@ Pork Chop can be deployed on any server with python3.
 * `pip3 install -r requirements.txt` install pork-chop's python3 dependencies
 * Set environment variables for secrets:
 	- `$EDITOR .env` record environment variables to a file with text editor of choice, minimum need to set BOT_ID (use .env.example for reference)
-	- `export $(grep -v '^#' .env | xargs)` set environment variables from .env file
+	- `export $(grep -v '^#' .env)` set environment variables from .env file
 * OR use .secrets json formatted file for secrets:
 	- `$EDITOR .secrets` record secrets to file with text editor of choice, minimum need to set BOT_ID (use .secrets.example for reference)
 * `sudo ./pork-chop.py -d` deploy pork chop on port 80 (you can add `&> /dev/null &` to ignore output and run in background)
