@@ -131,7 +131,8 @@ def command_handler(message):
         '!stonks': stonks_handler,
         '!helpmecook': recipes_handler, 
         '!yt': youtube_handler,
-        '!reddit': reddit_handler
+        '!reddit': reddit_handler,
+        '!word': word_handler
     }
 
     # Exclude modules based on config.json
