@@ -51,7 +51,7 @@ else: # Otherwise, try environment variables
     try:
         bot_id = os.environ['BOT_ID']
     except KeyError:
-        sys.exit("Error: 'bot_id' environment vairable not present")
+        sys.exit("Error: 'bot_id' environment variable not present")
 
 
 # Flask Setup
