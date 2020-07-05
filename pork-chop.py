@@ -51,7 +51,7 @@ else: # Otherwise, try environment variables
     try:
         bot_id = os.environ['BOT_ID']
     except KeyError:
-        sys.exit("Error: 'bot_id' environment vairable not present")
+        sys.exit("Error: 'bot_id' environment variable not present")
 
 
 # Flask Setup
@@ -131,7 +131,8 @@ def command_handler(message):
         '!stonks': stonks_handler,
         '!helpmecook': recipes_handler, 
         '!yt': youtube_handler,
-        '!reddit': reddit_handler
+        '!reddit': reddit_handler,
+        '!word': word_handler
     }
 
     # Exclude modules based on config.json
