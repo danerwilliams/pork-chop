@@ -22,6 +22,7 @@ Pork Chop has a few options for training:
 Pork chop will respond to the following command modules:
 * !example - Template module
 * !usage - Display modules and their use
+* !joke - Display a random joke.
 * !kanye - Display a random Kanye West quote.
 * !stonks \<symbol\> - Get stock price information
 * !turn \<user\> [list] - Turn a user or list number of turns for all users

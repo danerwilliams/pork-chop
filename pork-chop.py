@@ -27,6 +27,7 @@ from chatterbot.trainers import ListTrainer
 from importlib import reload
 from modules.usage import usage_handler
 from modules.stonks import stonks_handler
+from modules.joke import joke_handler
 from modules.kanye import kanye_handler
 from modules.turn import turn_handler
 from modules.recipes import recipes_handler
@@ -136,7 +137,8 @@ def command_handler(message):
         '!yt': youtube_handler,
         '!reddit': reddit_handler,
         '!word': word_handler,
-        '!clout': clout_handler
+        '!clout': clout_handler,
+        '!joke': joke_handler
     }
 
     # Exclude modules based on config.json
