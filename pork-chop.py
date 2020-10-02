@@ -32,6 +32,9 @@ from modules.turn import turn_handler
 from modules.recipes import recipes_handler
 from modules.youtube import youtube_handler
 from modules.reddit import reddit_handler
+#new modules(word module isnt new but it wasnt imported so I did it for you)
+from modules.clout import clout_handler
+from modules.word import word_handler
 
 # Globals
 
@@ -132,7 +135,8 @@ def command_handler(message):
         '!helpmecook': recipes_handler, 
         '!yt': youtube_handler,
         '!reddit': reddit_handler,
-        '!word': word_handler
+        '!word': word_handler,
+        '!clout': clout_handler
     }
 
     # Exclude modules based on config.json
