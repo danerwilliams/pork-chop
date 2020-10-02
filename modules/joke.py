@@ -7,7 +7,8 @@ def joke_handler(message):
     r = requests.get(url)
 
     if r.status_code == 200:
-        return f">{r.setup} . . . {r.punchline}"
+        joke = r.json()
+        return f">{joke['setup']} . . . {joke['punchline']}"
     else:
         return f"Error {r.status_code}: could not retrieve joke"
 
