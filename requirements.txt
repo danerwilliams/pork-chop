@@ -1,4 +1,4 @@
-Flask==1.1.2
+Flask==2.3.2
 ChatterBot==1.0.5
 chatterbot-corpus==1.2.0
 requests==2.23.0
